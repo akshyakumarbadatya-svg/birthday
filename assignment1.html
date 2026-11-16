@@ -65,7 +65,6 @@
     <script>
 function isEven(){
         new Promise((resolve,reject)=>{
-        //  const input=require("prompt-sync")({sigint:true})
         num = document.getElementById("number").value
             if(num %2 ==0){
                 resolve(`${num} is Even number,Resolve State`)
@@ -106,12 +105,12 @@ function isEven(){
         let email = document.getElementById("emailId")
         function displayPromise(){
             return new Promise((resolve,rejet)=>{
-                resolve(userName.value,email.value)
+                resolve(userName.value)
             })
         }
         function displayPromise2() {
             return new Promise((resolve,reject)=>{
-                resolve(userName.value,email.value)
+                resolve(email.value)
 
             })
             }
