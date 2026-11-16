@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async & Await -- Assignment </title>
+</head>
+<body>
+    <style>
+        h3{
+            text-transform: capitalize;
+        }
+    </style>
+    <h3>1.create a new promise reject with message "Something went wrong" after 2sec </h3>
+    <button onclick="Show1()">Assignmet 1</button>
+
+    <script>
+        function Show1(){  // creating promise
+            new Promise((resolveState,rejectState)=>{
+                
+                // setTimeout for 2sec 
+                res =setTimeout(rejectState,2000,"rejectState")
+            })
+            //  handle with the catch methods
+            .catch(err => console.log("Something Went Wrong in ",err))
+       
+    }
+          
+    </script>
+    <hr>
+    <h3>2.function creates a promise check whether the age is 18,above for eligiblie to vote in resolve state otherwise not eligible for vote in rejected state</h3>
+    <input type="number" value="" id="num" placeholder="Enter Your Age">
+    <button type="submit" onclick="check()">check</button>
+<script>
+ function check(){
+         return new Promise((resolve,reject)=>
+         {
+            //  const input= require("prompt-sync")({sigint:true})
+            //  age = +prompt("Enter Your Age :")
+            age = document.getElementById("num").value
+             if(age >= 18){
+                 resolve("Eligible For vote");
+                
+             }
+             else{
+                     reject("not eligible for vote");
+                
+                 }
+             }).then((sucess)=>{
+             console.log(sucess);
+            
+         }).catch((fail)=>{
+                console.log(fail)
+           })
+        }
+    //  check()
+
+</script>
+<hr>
+<h3>3.create a promise whether a number is even (resolve),odd(reject) </h3>
+
+<input type="number" name="" id="number" placeholder="Enter The Number">
+<button onclick="isEven()">Check</button>
+    <script>
+function isEven(){
+        new Promise((resolve,reject)=>{
+        //  const input=require("prompt-sync")({sigint:true})
+        num = document.getElementById("number").value
+            if(num %2 ==0){
+                resolve(`${num} is Even number,Resolve State`)
+            }
+            else{
+                reject(`${num} is Odd Number ,Rejected State`)
+            }
+        }).then((even)=>
+            console.log(even)
+        ).catch((odd)=>{
+            console.log(odd)
+            
+        })
+
+    }
+    </script>
+    <hr>
+    <h3>4.Async function wait for 3 sec before displaying <i>Hello Students</i></h3>
+    <button onclick="display()">Display</button>
+    <script>
+        function display(){
+            setTimeout(() => {
+                console.log("Hello Students")
+            }, 3000);
+        }
+        async function show(){
+            let res =  await display()
+            console.log(res)
+        }
+    </script>
+    <hr>
+    <h3>6.creates a function that fetches userdata using async and await and display username and email</h3>
+    <input type="text" id="username" placeholder="Enter Your Username">
+    <input type="email" id="emailId" placeholder="Enter Your Email ID">
+     <button onclick="showAsync()">Get Details</button>
+     <script>
+        let userName = document.getElementById("username")
+        let email = document.getElementById("emailId")
+        function displayPromise(){
+            return new Promise((resolve,rejet)=>{
+                resolve(userName.value,email.value)
+            })
+        }
+        function displayPromise2() {
+            return new Promise((resolve,reject)=>{
+                resolve(userName.value,email.value)
+
+            })
+            }
+            async function showAsync() {
+                try{
+                    let res1 = await displayPromise()
+                    let res2 = await displayPromise2()
+                    console.log("username :",res1);
+                    console.log("Password : ",res2);
+                    
+                }
+                catch(err){
+                    console.log(err);
+                    
+                }
+            }
+            
+     </script>
+</body>
+</html>
+
+
+
+
+
+
+
+ 
+
+    
